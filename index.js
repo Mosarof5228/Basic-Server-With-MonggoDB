@@ -31,6 +31,7 @@ async function run() {
         await client.connect();
 
         const servicesCollection = client.db('CAR-SERVICE').collection('Services');
+        const bookingsCollection = cliend.db('CAR-SERVICE').collection('bookings')
 
         //get api for all data
         app.get('/services', async (req, res) => {
@@ -55,10 +56,10 @@ async function run() {
 
 
         //insert a document
-        app.post('service', async (req, res) => {
-            const newService = req.body;
-            console.log(newService);
-            const result = await servicesCollection.insertOne(newService);
+        app.post('bookings', async (req, res) => {
+            const newBooking = req.body;
+            console.log(newBooking);
+            const result = await bookingsCollection.insertOne(newBooking);
             res.send(result);
         })
 
